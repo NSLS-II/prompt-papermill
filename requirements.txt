@@ -1,0 +1,4 @@
+databroker
+event-model
+ipykernel
+# plus any requirements for the notebook itself
