@@ -20,7 +20,10 @@ wider use.
 
 ## Deployment
 
-This script is placed at
+This expects `bluesky-0MQ-proxy` is running. DAMA has tools for configuring
+this automatically and can provide it upon request.
+
+The Python script that listens for new Runs and starts papermill is placed at:
 
 ```
 /opt/bluesky_workers/papermill_worker.py
@@ -39,6 +42,9 @@ conda create -p /opt/conda_envs/papermill-worker
 pip install <requirements>
 ```
 
+where `<requirements>` are given by `requirements.txt` in this repo.
+Additionally, the requirements for the specific notebook must be installed.
+
 The notebook(s) run by papermill are located in the directory
 
 ```
@@ -51,11 +57,10 @@ The results generated are placed in the directory
 /opt/papermill/results
 ```
 
+They will be given names like `<notebook-filename-{uid}.ipynb>`.
+
 The output directory should be changed in the future! No proper storage is
 currently available, so this is a temporary solution.
-
-where `<requirements>` are given by `requirements.txt` in this repo.
-Additionally, the requirements for the specific notebook must be installed.
 
 ## Common Tasks
 
