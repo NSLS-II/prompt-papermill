@@ -45,19 +45,20 @@ pip install <requirements>
 where `<requirements>` are given by `requirements.txt` in this repo.
 Additionally, the requirements for the specific notebook must be installed.
 
-The notebook(s) run by papermill are located in the directory
+The notebook(s) run by papermill are sorted in directories named by the
+corresponding plan_name:
 
 ```
-/opt/papermill/templates
+/opt/papermill/templates/{plan_name}
 ```
 
 The results generated are placed in the directory
 
 ```
-/opt/papermill/results
+/opt/papermill/results/{plan_name}
 ```
 
-They will be given names like `<notebook-filename-{uid}.ipynb>`.
+They will be given names like `<notebook_filename_{uid}.ipynb>`.
 
 The output directory should be changed in the future! No proper storage is
 currently available, so this is a temporary solution.
@@ -97,7 +98,7 @@ Copy the working copy (likely in a home directory) to the system location where
 the papermill worker looks for it.
 
 ```
-sudo cp path/to/working/copy /opt/papermill/templates/reflection_scan.ipynb
+sudo cp path/to/working/copy /opt/papermill/templates/reflection_scan/my_notebook.ipynb
 ```
 
 It is not necessary to restart the worker; the changes will take effect next
