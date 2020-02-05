@@ -3,7 +3,7 @@
 This kicks off execution of a notebook when a run completes. It is an example of
 "prompt" data analysis.
 
-This is a sketch developed at JPLS. There work to be done to generalize it for
+This is a sketch developed at JPLS. There is work to be done to generalize it for
 wider use.
 
 ## What does this do?
@@ -49,13 +49,13 @@ The notebook(s) run by papermill are sorted in directories named by the
 corresponding plan_name:
 
 ```
-/opt/papermill/templates/{plan_name}
+/opt/bluesky_postprocess/{plan_name}/papermill_templates
 ```
 
 The results generated are placed in the directory
 
 ```
-/opt/papermill/results/{plan_name}
+/opt/bluesky_postprocess/{plan_name}/results
 ```
 
 They will be given names like `<notebook_filename_{uid}.ipynb>`.
@@ -98,7 +98,7 @@ Copy the working copy (likely in a home directory) to the system location where
 the papermill worker looks for it.
 
 ```
-sudo cp path/to/working/copy /opt/papermill/templates/reflection_scan/my_notebook.ipynb
+sudo cp path/to/working/copy /opt/bluesky_postprocess/{plan_name}/papermill_templates/my_notebook.ipynb
 ```
 
 It is not necessary to restart the worker; the changes will take effect next

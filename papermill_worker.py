@@ -7,8 +7,8 @@ from bluesky.callbacks.zmq import RemoteDispatcher
 import papermill
 
 
-BASE_PATH = '/opt/papermill/'
-TEMPLATE_PATH = os.path.join(BASE_PATH, 'templates')
+BASE_PATH = '/opt/bluesky_postprocess/{plan_name}'
+TEMPLATE_PATH = os.path.join(BASE_PATH, 'papermill_templates')
 OUTPUT_PATH = os.path.join(BASE_PATH, 'results')
 
 
@@ -16,14 +16,13 @@ def factory(name, start_doc):
     plan_name = start_doc.get('plan_name')
     uid = start_doc['uid']
     callbacks = []
-    input_directory = os.path.join(TEMPLATE_PATH, plan_name)
+    input_directory = TEMPLATE_PATH.format(plan_name)
     if os.path.isdir(input_directory):
         for input_path in glob.glob(os.path.join(input_directory, '*.ipynb')):
             basename = os.path.basename(input_path)
             filename, ext = os.path.splitext(basename)
             output_path = os.path.join(
-                OUTPUT_PATH,
-                plan_name,
+                OUTPUT_PATH.format(plan_name),
                 f'{filename}_{uid}{ext}')
 
             def callback(name, doc):
